@@ -1,3 +1,4 @@
+import { ModeToggle } from "./mood-toggler";
 import { WalletSelector } from "./WalletSelector";
 
 export function Header() {
@@ -8,7 +9,9 @@ export function Header() {
 
       <div className="flex gap-2 items-center flex-wrap">
         <WalletSelector />
+        <ModeToggle/>
       </div>
+     
     </div>
   );
 }
