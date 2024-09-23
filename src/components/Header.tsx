@@ -1,6 +1,6 @@
 import { ModeToggle } from "./mood-toggler";
-import { Button } from "@/components/ui/button";
 import { WalletSelector } from "./WalletSelector";
+import { LoginDrawer, OpenDrawerButton } from './home/LoginDrawer';
 
 export function Header() {
   return (
@@ -11,9 +11,7 @@ export function Header() {
         <WalletSelector />
         <div>
           {" "}
-          <Button size="sm">
-            Login
-          </Button>
+          <LoginDrawer openDrawerButton={<OpenDrawerButton />}/>
         </div>
         <ModeToggle />
       </div>
