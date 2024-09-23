@@ -14,6 +14,7 @@ import { Gem } from "lucide-react";
 // Internal Components
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
+import { IssueTable } from "@/components/home/IssueTable";
 
 function App() {
   const { connected } = useWallet();
@@ -21,7 +22,7 @@ function App() {
   return (
     <>
       <Header />
-      <div className="">
+      <div className="md:px-8">
         {connected ? (
           <div className="flex items-center justify-center flex-col">
             <Card>
@@ -45,6 +46,9 @@ function App() {
             </div>
             <div className="py-4">
               <StatsCard />
+            </div>
+            <div className="py-4">
+              <IssueTable />
             </div>
           </div>
           // <CardHeader>
