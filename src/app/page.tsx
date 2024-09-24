@@ -6,7 +6,6 @@ import { MessageBoard } from "@/components/MessageBoard";
 import { NetworkInfo } from "@/components/NetworkInfo";
 import { TransferAPT } from "@/components/TransferAPT";
 import { WalletDetails } from "@/components/WalletDetails";
-import { Search } from "@/components/home/Search";
 import { StatsCard } from "@/components/home/StatsCard";
 import { Button } from "@/components/ui/button";
 import { Gem } from "lucide-react";
@@ -14,7 +13,8 @@ import { Gem } from "lucide-react";
 // Internal Components
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
-import { IssueTable } from "@/components/home/IssueTable";
+import RepoTable from "@/components/home/RepoTable";
+import { Repository } from "@/types";
 
 function App() {
   const { connected } = useWallet();
@@ -38,17 +38,19 @@ function App() {
         ) : (
           <div className="py-4 px-2">
             <div className="flex justify-between items-center flex-wrap gap-4">
-              <Search />
+              <StatsCard />
               <Button size="sm">
                 <Gem className="mr-2 h-4 w-4" />
                 View Attestation
               </Button>
             </div>
-            <div className="py-4">
-              <StatsCard />
-            </div>
-            <div className="py-4">
-              <IssueTable />
+          
+            <div className="py-8">
+              <RepoTable
+                onRepoSelect={function (repo: Repository): void {
+                  throw new Error("Function not implemented.");
+                }}
+              />
             </div>
           </div>
           // <CardHeader>
