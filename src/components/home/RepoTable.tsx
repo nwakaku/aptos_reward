@@ -60,14 +60,17 @@ const RepoTable: React.FC<RepositoryTableProps> = ({ onRepoSelect }) => {
       .sort((a, b) => parseFloat(b.reward) - parseFloat(a.reward));
   }, [repos, rewards]);
 
+  
   const filteredRepos = useMemo(() => {
-    if (!sortedRepos || !searchTerm) return [];
-    return sortedRepos.filter(
-      (repo) =>
-        repo.organisation.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        repo.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (repo.description && repo.description.toLowerCase().includes(searchTerm.toLowerCase())),
-    );
+    if (!sortedRepos) return [];
+    return searchTerm
+      ? sortedRepos.filter(
+          (repo) =>
+            repo.organisation.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            repo.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            (repo.description && repo.description.toLowerCase().includes(searchTerm.toLowerCase())),
+        )
+      : sortedRepos;
   }, [sortedRepos, searchTerm]);
 
   if (isLoading) {
