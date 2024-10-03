@@ -8,8 +8,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
-  title: "NextJS Boilerplate Template",
-  description: "NextJS Boilerplate Template is a...",
+  title: "Aptos_Rewards",
+  description: "Aptos_Rewards: Empowering the Future of Collaborative Software Development",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
