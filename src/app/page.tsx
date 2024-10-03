@@ -79,28 +79,28 @@ function App() {
           </div>
           <aside
             className="relative flex-auto border-e border-lime-300 hidden md:block  w-1/4"
-            style={{
-              background:
-                "linear-gradient(to left, rgba(192,255,102,1) 0%, rgba(192,255,102,0.8) 20%, rgba(0,0,0,0.8) 50%)",
-            }}
+            // style={{
+            //   background:
+            //     "linear-gradient(to left, rgba(192,255,102,1) 0%, rgba(192,255,102,0.8) 20%, rgba(0,0,0,0.8) 50%)",
+            // }}
           ></aside>
         </div>
         <div className="flex w-full h-full xl:w-2/4 flex-col items-center py-12 px-4">
           <div className="w-full flex justify-center items-center">
-            <Tabs defaultValue="potential" className="w-full">
+            <Tabs defaultValue="feature" className="w-full">
               <TabsList className="w-full">
-                <TabsTrigger value="potential" className="w-1/2   data-[state=active]:text-lime-300">
-                  Open Source Potentials
-                </TabsTrigger>
-                <TabsTrigger value="feature" className="w-1/2  data-[state=active]:text-lime-300">
+                <TabsTrigger value="feature" className="w-1/2   data-[state=active]:text-lime-300">
                   Features
                 </TabsTrigger>
+                <TabsTrigger value="potential" className="w-1/2  data-[state=active]:text-lime-300">
+                  Open Source Potentials
+                </TabsTrigger>
               </TabsList>
-              <TabsContent value="potential" className="py-4">
-                <Potential />
-              </TabsContent>
               <TabsContent value="feature" className="py-4">
                 <Features />
+              </TabsContent>
+              <TabsContent value="potential" className="py-4">
+                <Potential />
               </TabsContent>
             </Tabs>
           </div>

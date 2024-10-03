@@ -1,14 +1,10 @@
-import Image from "next/image";
 import React from "react";
 import { Group, Gem, TrendingUp } from "lucide-react";
 
 export default function Potential() {
   return (
     <div className="py-2">
-      <div>
-        <Image src="/map.svg" alt={"potential map"} width={300} height={300} />
-      </div>
-
+    
       <div className="px-8 py-2 space-y-12">
         <div className="flex  gap-4 p-2 shadow-lg shadow-lime-300/50 rounded-md">
           <Gem className="text-lime-300" size={"32px"} />
