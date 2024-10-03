@@ -41,7 +41,7 @@ const RepoTable: React.FC<RepositoryTableProps> = ({ onRepoSelect }) => {
     if (data) {
       setRepos(data);
       setRepoIds(data.map((repo) => BigInt(repo.id)));
-      console.log({ data }, "ppe");
+      localStorage.setItem("repoCount", data.length.toString());
     }
   }, [data]);
 
