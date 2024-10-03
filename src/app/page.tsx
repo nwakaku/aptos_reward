@@ -1,62 +1,85 @@
 "use client";
 
-import { AccountInfo } from "@/components/AccountInfo";
-import { Header } from "@/components/Header";
-import { MessageBoard } from "@/components/MessageBoard";
-import { NetworkInfo } from "@/components/NetworkInfo";
-import { TransferAPT } from "@/components/TransferAPT";
-import { WalletDetails } from "@/components/WalletDetails";
-import { StatsCard } from "@/components/home/StatsCard";
 import { Button } from "@/components/ui/button";
-import { Gem } from "lucide-react";
 
-// Internal Components
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useWallet } from "@aptos-labs/wallet-adapter-react";
-import RepoTable from "@/components/home/RepoTable";
-import { Repository } from "@/types";
+import Link from "next/link";
 
 function App() {
-  const { connected } = useWallet();
-
   return (
     <>
-      <Header />
-      <div className="md:px-8">
-        {connected ? (
-          <div className="flex items-center justify-center flex-col">
-            <Card>
-              <CardContent className="flex flex-col gap-10 pt-6">
-                <WalletDetails />
-                <NetworkInfo />
-                <AccountInfo />
-                <TransferAPT />
-                <MessageBoard />
-              </CardContent>
-            </Card>
+      <div className="overflow-y-auto md:overflow-y-hidden md:flex flex-col md:flex-row relative h-screen justify-between items-center">
+        <div className="w-full xl:w-2/4 h-full py-6 px-4 md:px-12 ">
+          {/* <div className="bg-gradient-from-r from-lime-500 to-transparent h-full w-full"> */}
+          <div>
+            {" "}
+            <h1 className="text-md md:text-xl font-inter font-semibold">Aptos_Reward</h1>
           </div>
-        ) : (
-          <div className="py-4 px-2">
-            <div className="flex justify-between items-center flex-wrap gap-4">
-              <StatsCard />
-              <Button size="sm">
-                <Gem className="mr-2 h-4 w-4" />
-                View Attestation
-              </Button>
-            </div>
-          
-            <div className="py-8">
-              <RepoTable
-                onRepoSelect={function (repo: Repository): void {
-                  throw new Error("Function not implemented.");
-                }}
-              />
+          <div className="flex justify-start items-center h-2/3 w-full md:px-24">
+            <div className="space-y-6">
+              <h1 className="text-6xl md:text-7xl text-slate-500">
+                Revolutionize the Way Open-Source Projects are <span className="text-7xl text-lime-300">Funded</span>{" "}
+                and <span className="text-7xl text-lime-300">Rewarded</span>
+              </h1>
+
+              <p className="text-slate-500 text-xl">
+                Aptos_Rewards is a groundbreaking platform that bridges the gap between organizations and open-source
+                developers, enabling a more rewarding and transparent ecosystem for collaborative software development.
+              </p>
+
+              <div>
+                <Link href="/home">
+                  <Button
+                    size="sm"
+                    className="px-12 font-semibold bg-lime-800 text-white hover:text-white hover:bg-lime-800"
+                  >
+                    Launch App
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
-          // <CardHeader>
-          //   <CardTitle>To get started Connect a wallet</CardTitle>
-          // </CardHeader>
-        )}
+          <div className="md:px-12">
+            <div className="flex justify-between items-center gap-2">
+              <div className="space-y-2">
+                <h4 className="text-slate-500 font-medium">Awarded</h4>
+                <p className="text-sm md:text-xl">
+                  <span className="font-semibold">2,123</span> Bounties
+                </p>
+              </div>
+
+              <div className="space-y-2">
+                <h4 className="text-slate-500 font-medium">Totalling</h4>
+                <p className="text-sm md:text-xl font-semibold">$269,738 .00</p>
+              </div>
+
+              <div className="space-y-2">
+                <h4 className="text-slate-500 font-medium">To</h4>
+                <p className="text-sm md:text-xl">
+                  <span className="font-semibold">487</span> Contributors
+                </p>
+              </div>
+
+              <div className="space-y-2">
+                <h4 className="text-slate-500 font-medium">From</h4>
+                <p className="text-sm md:text-xl">
+                  <span className="font-semibold">64</span> Countries
+                </p>
+              </div>
+            </div>
+            {/* </div> */}
+
+            {/* kiekek */}
+          </div>
+          <div className="py-4 absolute bottom-0">
+            <p className="text-sm text-slate-500 text-center">
+              {new Date().getFullYear()} Aptops_Rewards, Public Benefits Corporation
+            </p>
+          </div>
+        </div>
+        <div className="flex w-full h-full xl:w-2/4 flex-col items-center py-12 px-4">
+        
+        
+        hello</div>
       </div>
     </>
   );
