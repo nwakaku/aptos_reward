@@ -9,14 +9,9 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 
 const organisations = [
-  { name: "base-org", shortName: "Base", chipStyle: "bg-blue-500 text-white" },
-  { name: "ethereum-optimism", shortName: "Optimism", chipStyle: "bg-red-500 text-white" },
-  { name: "krane-apps", shortName: "Krane", chipStyle: "bg-yellow-500 text-black" },
-  { name: "celo-org", shortName: "Celo", chipStyle: "bg-yellow-300 text-black" },
-  { name: "blockscout", shortName: "Blockscout", chipStyle: "bg-gray-500 text-white" },
+  { name: "nwakaku", shortName: "Nwakaku", chipStyle: "bg-blue-500 text-white" },
+  { name: "aptos-labs", shortName: "AptosLabs", chipStyle: "bg-red-500 text-white" },
   { name: "worldcoin", shortName: "Worldcoin", chipStyle: "bg-black text-white" },
-  { name: "ethereum-attestation-service", shortName: "EAS", chipStyle: "bg-blue-700 text-white" },
-  { name: "mode-network", shortName: "Mode", chipStyle: "bg-yellow-700 text-white" },
 ];
 
 const RepoTable: React.FC<RepositoryTableProps> = ({ onRepoSelect }) => {
@@ -60,7 +55,6 @@ const RepoTable: React.FC<RepositoryTableProps> = ({ onRepoSelect }) => {
       .sort((a, b) => parseFloat(b.reward) - parseFloat(a.reward));
   }, [repos, rewards]);
 
-  
   const filteredRepos = useMemo(() => {
     if (!sortedRepos) return [];
     return searchTerm
