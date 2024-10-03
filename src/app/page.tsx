@@ -1,6 +1,8 @@
 "use client";
 
+import Potential from "@/components/landing/Potential";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import Link from "next/link";
 
@@ -14,11 +16,11 @@ function App() {
             {" "}
             <h1 className="text-md md:text-xl font-inter font-semibold">Aptos_Reward</h1>
           </div>
-          <div className="flex justify-start items-center h-2/3 w-full md:px-24">
+          <div className="flex justify-start items-center md:h-2/3 w-full md:px-24 py-4">
             <div className="space-y-6">
-              <h1 className="text-6xl md:text-7xl text-slate-500">
-                Revolutionize the Way Open-Source Projects are <span className="text-7xl text-lime-300">Funded</span>{" "}
-                and <span className="text-7xl text-lime-300">Rewarded</span>
+              <h1 className="text-4xl md:text-7xl text-slate-500">
+                Revolutionize the Way Open-Source Projects are <span className="text-lime-300">Funded</span>{" "}
+                and <span className="text-lime-300">Rewarded</span>
               </h1>
 
               <p className="text-slate-500 text-xl">
@@ -38,7 +40,7 @@ function App() {
               </div>
             </div>
           </div>
-          <div className="md:px-12">
+          <div className="md:px-12 md:py-12">
             <div className="flex justify-between items-center gap-2">
               <div className="space-y-2">
                 <h4 className="text-slate-500 font-medium">Awarded</h4>
@@ -77,9 +79,25 @@ function App() {
           </div>
         </div>
         <div className="flex w-full h-full xl:w-2/4 flex-col items-center py-12 px-4">
-        
-        
-        hello</div>
+          <div className="w-full flex justify-center items-center">
+            <Tabs defaultValue="potential" className="w-full">
+              <TabsList className="w-full">
+                <TabsTrigger value="potential" className="w-1/2   data-[state=active]:text-lime-300">
+                  Open Source Potentials
+                </TabsTrigger>
+                <TabsTrigger value="feature" className="w-1/2  data-[state=active]:text-lime-300">
+                  Features
+                </TabsTrigger>
+              </TabsList>
+              <TabsContent value="potential" className="py-4">
+                <Potential />
+              </TabsContent>
+              <TabsContent value="feature" className="py-4">
+                Change your password here.
+              </TabsContent>
+            </Tabs>
+          </div>
+        </div>
       </div>
     </>
   );
