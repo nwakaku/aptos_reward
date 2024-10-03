@@ -18,7 +18,7 @@ export function StatsCard() {
           <h1 className="md:text-2xl text-slate-500 font-bold md:font-medium">{repoCount}</h1>
           <GitGraph className="h-6 w-6 text-blue-300 font-bold" />
         </div>
-        <p className="text-sm text-slate-400">Total repositories in the organisation</p>
+        <p className="text-sm text-slate-400">Total number of repositories</p>
       </div>
     </div>
   );

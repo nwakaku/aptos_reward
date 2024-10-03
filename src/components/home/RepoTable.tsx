@@ -9,9 +9,9 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 
 const organisations = [
-  { name: "nwakaku", shortName: "Nwakaku", chipStyle: "bg-blue-500 text-white" },
+  { name: "nwakaku", shortName: "Nwakaku", chipStyle: "bg-blue-300 text-white" },
   { name: "aptos-labs", shortName: "AptosLabs", chipStyle: "bg-red-500 text-white" },
-  { name: "worldcoin", shortName: "Worldcoin", chipStyle: "bg-black text-white" },
+  { name: "worldcoin", shortName: "Worldcoin", chipStyle: "bg-lime-200 text-black" },
 ];
 
 const RepoTable: React.FC<RepositoryTableProps> = ({ onRepoSelect }) => {
@@ -113,7 +113,7 @@ const RepoTable: React.FC<RepositoryTableProps> = ({ onRepoSelect }) => {
                 <TableRow key={repo.id}>
                   <TableCell className="font-medium">{index + 1}</TableCell>
                   <TableCell>
-                    <Badge>{org?.shortName}</Badge>
+                    <Badge className={`${org?.chipStyle}`}>{org?.shortName}</Badge>
                   </TableCell>
                   <TableCell className="underline cursor-pointer">
                     <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="font-semibold">
