@@ -8,16 +8,41 @@ import { TransferAPT } from "@/components/TransferAPT";
 import { WalletDetails } from "@/components/WalletDetails";
 import { StatsCard } from "@/components/home/StatsCard";
 import { Button } from "@/components/ui/button";
-import { Gem } from "lucide-react";
+import { ArrowLeft, Gem } from "lucide-react";
 
 // Internal Components
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import RepoTable from "@/components/home/RepoTable";
 import { Repository } from "@/types";
+import { useState } from "react";
+import IssueStat from "@/components/home/IssueStat";
+import IssuesTable from "@/components/home/IssuesTable";
+import axios from "axios";
+
+const organisations = ["nwakaku", "aptos-labs", "worldcoin"];
 
 function App() {
   const { connected } = useWallet();
+  const [selectedRepo, setSelectedRepo] = useState<string>("");
+  const [repoId, setRepoId] = useState<number | null>(null);
+  const [issues, setIssues] = useState<any[]>([]);
+  const [selectedIssueId, setSelectedIssueId] = useState<number | null>(null);
+
+  const fetchAllIssues = async (repo: Repository) => {
+    try {
+      setSelectedRepo(repo.name);
+      setRepoId(repo.id);
+      const response = await axios.get(`https://api.github.com/repos/${repo.organisation}/${repo.name}/issues`);
+      const issueData = response.data;
+      console.log({issueData});
+      
+      localStorage.setItem("issueNumber", issueData.length);
+      setIssues(issueData);
+    } catch (error) {
+      setIssues([]);
+    }
+  };
 
   return (
     <>
@@ -37,20 +62,38 @@ function App() {
           </div>
         ) : (
           <div className="py-4 px-2">
-            <div className="flex justify-between items-center flex-wrap gap-4">
-              <StatsCard />
-              <Button size="sm">
-                <Gem className="mr-2 h-4 w-4" />
-                View Attestation
-              </Button>
-            </div>
-          
+            {selectedRepo ? (
+              <div className="flex justify-between items-center flex-wrap gap-4">
+                <Button size="sm" onClick={() => setSelectedRepo("")}>
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Go Back to Repositories
+                </Button>
+                <IssueStat />
+              </div>
+            ) : (
+              <div>
+                <div className="flex justify-between items-center flex-wrap gap-4">
+                  <StatsCard />
+                  <Button size="sm">
+                    <Gem className="mr-2 h-4 w-4" />
+                    View Attestation
+                  </Button>
+                </div>
+              </div>
+            )}
+
             <div className="py-8">
-              <RepoTable
-                onRepoSelect={function (repo: Repository): void {
-                  throw new Error("Function not implemented.");
-                }}
-              />
+              {selectedRepo ? (
+                <IssuesTable
+                  issues={issues}
+                  onAllocatedReward={(issueId: number) => {
+                    setSelectedIssueId(issueId);
+                  }}
+                  repoId={repoId}
+                />
+              ) : (
+                <RepoTable onRepoSelect={(repo) => fetchAllIssues(repo)} />
+              )}
             </div>
           </div>
           // <CardHeader>
