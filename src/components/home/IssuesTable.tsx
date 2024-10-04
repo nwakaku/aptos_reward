@@ -1,7 +1,7 @@
 import React from "react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Badge } from "lucide-react";
 import { Button } from "../ui/button";
+import AllocatedModal, { OpenModalButton } from "./AllocatedModal";
 
 interface Issue {
   id: number;
@@ -52,9 +52,10 @@ export default function IssuesTable({ issues, onAllocatedReward, repoId }: Issue
                 </span>
               </TableCell>
               <TableCell className="text-center underline cursor-pointer">
-                <Button variant="ghost" onClick={() => handleAllocateReward(issue.id)} className="text-red-500">
+                {/* <Button variant="ghost" onClick={() => handleAllocateReward(issue.id)} className="text-red-500">
                   Allocate
-                </Button>
+                </Button> */}
+                <AllocatedModal OpenModalButton={<OpenModalButton />} />
               </TableCell>
               <TableCell className="line-clamp-3 overflow-hidden text-ellipsis">{issue.body}</TableCell>
             </TableRow>
