@@ -20,6 +20,9 @@ const RepoTable: React.FC<RepositoryTableProps> = ({ onRepoSelect }) => {
   const [searchTerm, setSearchTerm] = useState<string>(""); // assume searchTerm is a state variable
   const [rewards, setRewards] = useState<any[]>([]);
 
+  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [itemsPerPage, setItemsPerPage] = useState<number>(10);
+
   const fetchRepos = async () => {
     const allRepos: Repository[] = [];
     for (const org of organisations) {
@@ -67,6 +70,19 @@ const RepoTable: React.FC<RepositoryTableProps> = ({ onRepoSelect }) => {
       : sortedRepos;
   }, [sortedRepos, searchTerm]);
 
+  const paginatedRepos = useMemo(() => {
+    if (!filteredRepos) return [];
+    const startIndex = currentPage * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return filteredRepos.slice(startIndex, endIndex);
+  }, [filteredRepos, currentPage, itemsPerPage]);
+
+  useEffect(() => {
+    if (currentPage > Math.ceil(filteredRepos.length / itemsPerPage)) {
+      setCurrentPage(Math.ceil(filteredRepos.length / itemsPerPage));
+    }
+  }, [filteredRepos, currentPage, itemsPerPage]);
+
   if (isLoading) {
     return (
       <div className="flex justify-center items-center">
@@ -107,7 +123,7 @@ const RepoTable: React.FC<RepositoryTableProps> = ({ onRepoSelect }) => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {filteredRepos.map((repo, index) => {
+            {paginatedRepos.map((repo, index) => {
               const org = organisations.find((x) => x.name === repo.organisation);
               return (
                 <TableRow key={repo.id}>
@@ -134,6 +150,20 @@ const RepoTable: React.FC<RepositoryTableProps> = ({ onRepoSelect }) => {
             })}
           </TableBody>
         </Table>
+      </div>
+
+      <div className="flex justify-end items-center py-4 gap-4">
+        <Button variant="ghost" onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 0}>
+          Previous
+        </Button>
+        <span className="mx-2">{currentPage + 1}</span>
+        <Button
+          variant="ghost"
+          onClick={() => setCurrentPage(currentPage + 1)}
+          disabled={currentPage >= Math.ceil(filteredRepos.length / itemsPerPage) - 1}
+        >
+          Next
+        </Button>
       </div>
     </>
   );
