@@ -21,7 +21,7 @@ interface IssueTableProps {
 export default function IssuesTable({ issues, onAllocatedReward, repoId }: IssueTableProps) {
   const handleAllocateReward = async (issueId: number) => {
     await onAllocatedReward(issueId);
-    console.log({issueId});
+    console.log({ issueId });
   };
   return (
     <div className="overflow-x-auto">
@@ -47,7 +47,9 @@ export default function IssuesTable({ issues, onAllocatedReward, repoId }: Issue
                 </a>
               </TableCell>
               <TableCell>
-                <Badge className="bg-blue-300 text-white font-bold uppercase">{issue.state}</Badge>
+                <span className="bg-gray-100 text-gray-800 text-xs font-semibold me-2 px-4 py-1 rounded-full">
+                  {issue.state}
+                </span>
               </TableCell>
               <TableCell className="text-center underline cursor-pointer">
                 <Button variant="ghost" onClick={() => handleAllocateReward(issue.id)} className="text-red-500">
