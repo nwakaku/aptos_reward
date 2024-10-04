@@ -52,10 +52,7 @@ export default function IssuesTable({ issues, onAllocatedReward, repoId }: Issue
                 </span>
               </TableCell>
               <TableCell className="text-center underline cursor-pointer">
-                {/* <Button variant="ghost" onClick={() => handleAllocateReward(issue.id)} className="text-red-500">
-                  Allocate
-                </Button> */}
-                <AllocatedModal OpenModalButton={<OpenModalButton />} />
+                <AllocatedModal OpenModalButton={<OpenModalButton onClick={() => handleAllocateReward(issue.id)} />} />
               </TableCell>
               <TableCell className="line-clamp-3 overflow-hidden text-ellipsis">{issue.body}</TableCell>
             </TableRow>

@@ -3,13 +3,17 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Button } from "@/components/ui/button";
 import { Input } from "../ui/input";
 
-export default function AllocatedModal({ OpenModalButton }: any) {
+interface AllocatedModalProps {
+  onClick: () => void;
+}
+
+export default function AllocatedModal({ OpenModalButton, issueId }: any) {
   return (
     <Dialog>
       {OpenModalButton}
       <DialogContent className="sm:max-w-[800px]">
         <DialogHeader>
-          <DialogTitle>Allocate Reward</DialogTitle>
+          <DialogTitle>Allocate Reward for issue #{issueId}</DialogTitle>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="py-12 md:px-4 flex justify-center items-center">
@@ -28,9 +32,9 @@ export default function AllocatedModal({ OpenModalButton }: any) {
   );
 }
 
-export const OpenModalButton = () => {
+export const OpenModalButton = ({ onClick }: AllocatedModalProps) => {
   return (
-    <DialogTrigger asChild>
+    <DialogTrigger asChild onClick={onClick}>
       <Button size="sm" variant="ghost">
         Allocate
       </Button>
