@@ -17,7 +17,7 @@ function App() {
               {" "}
               <h1 className="text-md md:text-xl font-inter font-semibold">Aptos_Reward</h1>
             </div>
-            <div className="flex justify-start items-center md:h-2/3 w-full md:px-24 py-4">
+            <div className="flex justify-start items-center  w-full md:px-8 py-12">
               <div className="space-y-6">
                 <h1 className="text-4xl md:text-7xl text-slate-500">
                   Revolutionize the Way Open-Source Projects are <span className="text-lime-300">Funded</span> and{" "}
