@@ -7,7 +7,7 @@ interface AllocatedModalProps {
   onClick: () => void;
 }
 
-export default function AllocatedModal({ OpenModalButton, issueId }: any) {
+export default function AllocatedModal({ OpenModalButton, issueId }: { OpenModalButton: any; issueId: number }) {
   return (
     <Dialog>
       {OpenModalButton}

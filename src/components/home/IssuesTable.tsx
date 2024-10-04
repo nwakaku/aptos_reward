@@ -1,6 +1,5 @@
 import React from "react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Button } from "../ui/button";
 import AllocatedModal, { OpenModalButton } from "./AllocatedModal";
 
 interface Issue {
@@ -52,7 +51,7 @@ export default function IssuesTable({ issues, onAllocatedReward, repoId }: Issue
                 </span>
               </TableCell>
               <TableCell className="text-center underline cursor-pointer">
-                <AllocatedModal OpenModalButton={<OpenModalButton onClick={() => handleAllocateReward(issue.id)} />} />
+                <AllocatedModal issueId={issue.id} OpenModalButton={<OpenModalButton onClick={() => handleAllocateReward(issue.id)} />} />
               </TableCell>
               <TableCell className="line-clamp-3 overflow-hidden text-ellipsis">{issue.body}</TableCell>
             </TableRow>
