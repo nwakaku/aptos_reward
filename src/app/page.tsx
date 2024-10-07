@@ -105,7 +105,6 @@ function App() {
             </Tabs>
           </div>
         </div>
-      </div>
     </>
   );
 }
