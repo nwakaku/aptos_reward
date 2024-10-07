@@ -29,7 +29,7 @@ function App() {
           </Card>
         ) : (
           <CardHeader>
-            <CardTitle>To get started Connect a wallet</CardTitle>
+            <CardTitle>Test</CardTitle>
           </CardHeader>
         )}
       </div>
