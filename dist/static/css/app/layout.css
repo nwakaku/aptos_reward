@@ -653,6 +653,10 @@ video {
   margin-left: -0.25rem;
   margin-right: -0.25rem;
 }
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -660,14 +664,6 @@ video {
 .my-1 {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
-}
-.mx-2 {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-}
-.mx-4 {
-  margin-left: 1rem;
-  margin-right: 1rem;
 }
 .mb-4 {
   margin-bottom: 1rem;
@@ -1302,9 +1298,6 @@ video {
 }
 .leading-snug {
   line-height: 1.375;
-}
-.leading-4 {
-  line-height: 1rem;
 }
 .tracking-tight {
   letter-spacing: -0.025em;
